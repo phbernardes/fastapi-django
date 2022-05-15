@@ -5,6 +5,7 @@ FLAKE8=.venv/bin/flake8
 
 venv:  ## Create local virtual env
 	rm -rf venv .venv
+	pip install pipenv
 	pipenv sync --dev
 
 run:  ## Run server on 127.0.0.1:8000
