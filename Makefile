@@ -8,6 +8,10 @@ venv:  ## Create local virtual env
 	pip install pipenv
 	pipenv sync --dev
 
+db:  ## Create database and superuser (admin/admin)
+	pipenv run ./manage.py migrate; 
+	pipenv run DJANGO_SUPERUSER_PASSWORD=admin ./manage.py createsuperuser --username admin --email admin@test.com --no-input
+
 run:  ## Run server on 127.0.0.1:8000
 	pipenv run uvicorn fastdjango.asgi:app --reload
 

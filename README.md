@@ -1,14 +1,33 @@
----
-layout: django-pydantic
-title: Django, Pydantic and FastAPI
-tags:
-  - python
-  - django
-  - fastapi
-  - pydantic
-  - djantic
-date: 2022-05-01 11:03:48
----
+# Creating a web API with FastAPI and Django
+
+# In a hurry?
+
+If you just want to run this project, [clone the repo](https://github.com/phbernardes/fastapi-django) and run these three commands in the root directory:
+
+```bash
+make venv
+make db
+make run
+```
+
+Then you can access:
+
+- FastAPI Swagger: http://127.0.0.1:8000/docs
+- Django admin: http://127.0.0.1:8000/django/admin
+
+You can log into admin with the admin/admin (user/password) credentials.
+
+# FastAPI
+
+FastAPI is based in Starlette and Pydantic.
+
+Starlette is a lightweight ASGI framework, it has a [impressive performance](https://www.techempower.com/benchmarks/#section=data-r20&hw=ph&test=fortune&l=zijzen-sf), supports async and its simplicity allow us to easily write scalable web systems.
+
+Pydantic provides data validation and serialization using python type annotations, it enforces type hints at runtime, provides user friendly errors when data is invalid, is fast (it [claims to be 12x faster than DRF](https://pydantic-docs.helpmanual.io/benchmarks/)).
+
+The union of Starlette and Pydantic added to automatic OpenAPI schemas generation and swagger gives us a great toolset to quickly develop a (Fast) API. Type annotations enforcement results in an amazing developer experience.
+
+FastAPI is database agnostic and easily integrable with any Python ORM (here enters Django ORM in this example).
 
 # Django
 
@@ -27,19 +46,6 @@ Django Rest Framework (DRF) serializers are way slower than Pydantic validators/
 Django is built based in metaclasses, this results in missing type hints in several objects you manipulate.
 
 Django ORM is not able to operate safely in an async environment. But discussions about supporting async are active and hopefully Psycopg3 implementation will enable this support. Use of [asgiref library](https://docs.djangoproject.com/en/4.0/topics/async/#async-views) solves this problem until this is implemented.
-
-
-# FastAPI
-
-FastAPI is based in Starlette and Pydantic.
-
-Starlette is a lightweight ASGI framework, it has a [impressive performance](https://www.techempower.com/benchmarks/#section=data-r20&hw=ph&test=fortune&l=zijzen-sf), supports async and its simplicity allow us to easily write scalable web systems.
-
-Pydantic provides data validation and serialization using python type annotations, it enforces type hints at runtime, provides user friendly errors when data is invalid, is fast (it [claims to be 12x faster than DRF](https://pydantic-docs.helpmanual.io/benchmarks/), I benchmarked it 6x faster for payloads validation and serialization).
-
-The union of Starlette and Pydantic added to automatic OpenAPI schemas generation and swagger gives us a great toolset to quickly develop a (Fast) API. Type annotations enforcement leads to an amazing developer experience.
-
-FastAPI is database agnostic and easily integrable with any Python ORM (here enters Django ORM in this example).
 
 # Uniting forces
 
@@ -695,7 +701,9 @@ Now you can go to http://127.0.0.1:8000/django/admin to manage users and forum p
 
 # Conclusion
 
-The objective of this tutorial is to show you how to use FastAPI with Django. FastAPI provides better performance than Django REST Framework, enforces type hints in the code and has minimal boilerplate code. Django ORM is a great choice for abstracting database operations and managing database migrations.
+We developed an API and you can access the swagger (http://127.0.0.1:8000/docs) and Django admin (http://127.0.0.1:8000/django/admin).
+
+FastAPI provides better performance than Django REST Framework, enforces type hints in the code and has minimal boilerplate code. Django ORM is a great choice for abstracting database operations and managing database migrations.
 
 ## Async
 
