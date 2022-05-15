@@ -128,3 +128,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 USER_MODEL = "users.User"
 AUTH_USER_MODEL = "users.User"
+
+PAGINATION = {
+    "max_size": 100,
+    "default_size": 20,
+}
