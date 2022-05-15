@@ -13,6 +13,8 @@ djangorestframework-simplejwt = "*"
 python-multipart = "*"
 
 [dev-packages]
+black = "*"
+isort = "*"
 
 [requires]
 python_version = "3.10"
